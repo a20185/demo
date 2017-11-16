@@ -5,6 +5,7 @@ import Tree from '../Tree/Tree'
 // import {Tree} from 'element-react'
 import Ajax from '../../ajax'
 import Config from '../../config'
+import SearchDebounce from '../../utils/debounce'
 import './TreeView.css'
 /**
  * 文件树组件
@@ -237,7 +238,7 @@ default   * @param {*} checked
     return (
       <div>
         <div className="searchBlock">
-          <Input placeholder="输入关键字进行搜索" ref='searcher' onChange={text => this.performSearch(text)} append={<Button type="primary" onClick={e => this.clearInput()} ><div className="clear" unselectable="on">aas</div></Button>}/>
+          <Input placeholder="输入关键字进行搜索" ref='searcher' onChange={text =>this.performSearch(text)} append={<Button type="primary" onClick={e => this.clearInput()} ><div className="clear" unselectable="on">aas</div></Button>}/>
           <span className="searchButton"></span>
           <span className="clearButton"></span>
         </div>
