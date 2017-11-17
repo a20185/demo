@@ -2,10 +2,9 @@ import React , {Component} from 'react'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
 import Tree from '../Tree/Tree'
-// import {Tree} from 'element-react'
 import Ajax from '../../ajax'
 import Config from '../../config'
-import SearchDebounce from '../../utils/debounce'
+import debounce from 'throttle-debounce/debounce'
 import './TreeView.css'
 /**
  * 文件树组件
@@ -110,11 +109,21 @@ default   * @param {*} checked
     });
   }
 
+  lazySearch = debounce(200, (...args) => {
+    if (this.isDeconstructed) return;
+    this.performSearch.apply(this, args);
+  });
+
   /**
    * 文件树搜索与二次处理函数
    * @param {*} keyWord 关键词
    */
   performSearch(keyWord) {
+    if (keyWord === "" && this.state.oldData) {
+      this.setState({data: this.state.oldData});
+      return;
+    }
+
     this.searchNode(keyWord, data => {
       var result = data.data;
       // console.log(result);
@@ -238,7 +247,7 @@ default   * @param {*} checked
     return (
       <div>
         <div className="searchBlock">
-          <Input placeholder="输入关键字进行搜索" ref='searcher' onChange={text =>this.performSearch(text)} append={<Button type="primary" onClick={e => this.clearInput()} ><div className="clear" unselectable="on">aas</div></Button>}/>
+          <Input placeholder="输入关键字进行搜索" ref='searcher' onChange={text =>this.lazySearch(text)} append={<Button type="primary" onClick={e => this.clearInput()} ><div className="clear" unselectable="on">aas</div></Button>}/>
           <span className="searchButton"></span>
           <span className="clearButton"></span>
         </div>

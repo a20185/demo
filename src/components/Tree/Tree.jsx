@@ -1,7 +1,4 @@
-/* @flow */
-
 import React from 'react';
-
 import PropTypes from '../../utils/proptypes';
 import Component from '../../utils/component';
 import require_condition from '../../utils/condition';
