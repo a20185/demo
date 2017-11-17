@@ -1,6 +1,5 @@
 import React from 'react';
 import debounce from 'throttle-debounce/debounce';
-
 import PropTypes from '../../utils/proptypes';
 import Component from '../../utils/component';
 import CollapseTransition from '../../utils/collapse';
@@ -27,7 +26,6 @@ NodeContent.propTypes = {
 
 
 export default class Node extends Component {
-
   constructor(props) {
     super(props);
 
@@ -198,7 +196,7 @@ export default class Node extends Component {
       >
         <div
           className="el-tree-node__content"
-          style={{ paddingLeft: `${(nodeModel.level - 1) * treeNode.props.indent}px` }}
+          style={{ paddingLeft: `${(nodeModel.level - 1) * treeNode.props.indent}px`}}
         >
           <span
             className={this.classNames('el-tree-node__expand-icon', {
@@ -248,5 +246,3 @@ Node.defaultProps = {
   options: {},
   onCheckChange() {},
 };
-
-// export default Node;

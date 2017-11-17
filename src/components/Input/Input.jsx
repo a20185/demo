@@ -12,7 +12,7 @@ class Input extends Component {
 
   constructor(props) {
     super(props);
-    console.log("Input Created");
+    console.log();
   }
 
   focus() {
@@ -52,12 +52,6 @@ class Input extends Component {
     if (onBlur) onBlur(e)
   }
 
-  handleIconClick() {
-    if (this.props.onIconClick) {
-      this.props.onIconClick()
-    }
-  }
-
 
   render() {
     const { type, size, prepend, append, icon, autoComplete, validating, rows, onMouseEnter, onMouseLeave,
@@ -92,6 +86,8 @@ class Input extends Component {
             className="el-input__inner"
             autoComplete={autoComplete}
             onChange={this.handleChange.bind(this)}
+            onFocus={this.handleFocus.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
           />
           { append && <div className="el-input-group__append">{append}</div> }
         </div>

@@ -1,6 +1,7 @@
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 
 function format(string, ...args) {
+  if (!string) return '';
   if (args.length === 1 && typeof args[0] === 'object') {
     args = args[0];
   }
@@ -8,15 +9,13 @@ function format(string, ...args) {
   if (!args || !args.hasOwnProperty) {
     args = {};
   }
-
   return string.replace(RE_NARGS, (match, prefix, i, index) => {
     let result;
-
-    if (string[index - 1] === '{' &&
-      string[index + match.length] === '}') {
+    if (string[index-1] === '{' &&
+      string[index + match.length+1] === '}') {
       return i;
     } else {
-      result = Object.prototype.hasOwnProperty.call(args, i) ? args[i] : null;
+      result = Object.prototype.hasOwnProperty.call(args[0], i) ? args[0][i] : null;
       if (result === null || result === undefined) {
         return '';
       }
@@ -28,7 +27,7 @@ function format(string, ...args) {
 
 
 
-let _lang = {
+let defaultLang = {
     el: {
       colorpicker: {
         confirm: '确定',
@@ -133,15 +132,18 @@ let _lang = {
     }
 };
   
+let _lang = defaultLang;
 
 function use(lang) {
-  _lang = lang;
+  _lang = Object.assign({},lang);
+  return lang;
 }
 
 function t(path, options) {
+  _lang = defaultLang;
   const array = path.split('.');
     let current = _lang;
-
+    // console.log(_lang);
     for (var i = 0, j = array.length; i < j; i++) {
       var property = array[i];
       var value = current[property];

@@ -6,7 +6,7 @@ class ExtendableError extends Error {
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);
     } else { 
-      this.stack = (new Error(message)).stack; 
+      this.stack = (new Error(message)).stack;
     }
   }
 } 
@@ -20,4 +20,5 @@ export default function require_condition(condition, msg = 'pre-condition failed
     if (!condition) {
       throw new ErrorConditionFailed(msg)
     }
+    return true;
 }

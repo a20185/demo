@@ -14,6 +14,11 @@ export default class Component extends React.Component {
   style(args) {
     return Object.assign({}, args, this.props.style)
   }
+  render() {
+    return (
+      <div></div>
+    )
+  }
 }
 
 Component.propTypes = {

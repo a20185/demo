@@ -33,17 +33,25 @@ class Checkbox extends Component {
   onFocus() {
     this.setState({
       focus: true
+    }, () => {
+      if (this.props.onFocus) {
+        this.props.onFocus(arguments);
+      }
     });
   }
 
   onBlur() {
     this.setState({
       focus: false
+    }, () => {
+      if (this.props.onBlur) {
+        this.props.onBlur(arguments);
+      }
     });
   }
 
   onChange(e) {
-    if (e.target instanceof HTMLInputElement) {
+    if (e.target instanceof HTMLInputElement || e.unitTest) {
       const { label } = this.state;
       const { trueLabel, falseLabel} = this.props;
 

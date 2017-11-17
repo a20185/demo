@@ -4,7 +4,14 @@ const ANIMATION_DURATION = 300;
 
 
 export default class CollapseTransition extends Component {
-
+  constructor(props) {
+    super(props);
+    if (!this.selfRef) {
+      this.selfRef = {};
+      if (!this.selfRef.style) this.selfRef.style = {};
+      if (!this.selfRef.dataset) this.selfRef.dataset = {};
+    }
+  }
   componentDidMount() {
     this.beforeEnter();
     if (this.props.isShow) {
@@ -31,6 +38,7 @@ export default class CollapseTransition extends Component {
       this.beforeLeave();
       this.leave();
     }
+    return isShow;
   }
 
   beforeEnter() {
@@ -58,7 +66,7 @@ export default class CollapseTransition extends Component {
       el.style.paddingBottom = el.dataset.oldPaddingBottom;
     }
 
-    el.style.overflow = 'hidden';
+    el.style.overflow = 'visible';
 
     this.enterTimer = setTimeout(() => this.afterEnter(), ANIMATION_DURATION);
   }
@@ -80,7 +88,7 @@ export default class CollapseTransition extends Component {
     if (el.scrollHeight !== 0) {
       el.style.height = el.scrollHeight + 'px';
     }
-    el.style.overflow = 'hidden';
+    el.style.overflow = 'visible';
   }
 
   leave() {
@@ -108,7 +116,8 @@ export default class CollapseTransition extends Component {
     return (
       <div
         className="collapse-transition"
-        style={{ overflow: 'hidden' }}
+        style={{ overflow: 'visible' }}
+        isshow={ this.props.children }
         ref={e => this.selfRef = e}
       >
         {this.props.children}
