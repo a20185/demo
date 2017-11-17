@@ -25,14 +25,5 @@
         "jest": "^21.2.1",
         "jest-cli": "^21.2.1",
         "json-server": "^0.12.1"
-    },
-    "jest": {
-        "moduleFileExtensions": ["js", "jsx"],
-        "moduleDirectories": ["node_modules"],
-        "moduleNameMapper": {
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__jest__/__mocks__/fileMock.js",
-            "\\.(css|scss)$": "identity-obj-proxy",
-            "^cpn(.*)$": "<rootDir>/src/components$1"
-        }
     }
 }
