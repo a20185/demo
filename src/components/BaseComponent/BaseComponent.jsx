@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default class Component extends React.Component {
@@ -21,7 +20,3 @@ export default class Component extends React.Component {
   }
 }
 
-Component.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object
-};

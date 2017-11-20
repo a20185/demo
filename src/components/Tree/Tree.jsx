@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from '../../utils/proptypes';
-import Component from '../../utils/component';
+import './Tree.css';
+import Component from '../BaseComponent/BaseComponent'
 import require_condition from '../../utils/condition';
 import Node from '../TreeNode/Node';
-import Locale from '../../utils/locale';
 import TreeStore from './model/treestore';
 
 export default class Tree extends Component {
@@ -25,7 +24,7 @@ export default class Tree extends Component {
     componentWillReceiveProps(nextProps) {
       if (nextProps.data instanceof Array) {
         this.root.setData(nextProps.data);
-        this.setState({}); //force update
+        this.setState({});
       }
     }
   
@@ -79,7 +78,7 @@ export default class Tree extends Component {
       this.store.setChecked(data, checked, deep);
     }
   
-    // used by child nodes, use tree store to store this info?
+
     getCurrentNode() {
       return this.state.currentNode;
     }
@@ -155,50 +154,9 @@ export default class Tree extends Component {
     }
   }
   
-  Tree.propTypes = {
-    autoExpandParent: PropTypes.bool,
-    checkStrictly: PropTypes.bool,
-    currentNodeKey: PropTypes.any,
-    defaultCheckedKeys: PropTypes.array,
-    defaultExpandedKeys: PropTypes.array,
-    defaultExpandAll: PropTypes.bool,
-    data: PropTypes.array,
-    emptyText: PropTypes.string,
-    expandOnClickNode: PropTypes.bool,
-    filterNodeMethod: PropTypes.func,
-    renderContent: PropTypes.func,
-    isShowCheckbox: PropTypes.bool,
-    accordion: PropTypes.bool,
-    indent: PropTypes.number,
-    nodeKey: PropTypes.string,
-    options: PropTypes.shape({
-      children: PropTypes.string,
-      label: PropTypes.string,
-      icon: PropTypes.string
-    }), //equal to props in vue element
-    lazy: PropTypes.bool, //todo: check this
-    highlightCurrent: PropTypes.bool,
-    // (f:(resolve, reject)=>Unit)=>Unit
-    load: PropTypes.func,
-    //
-    onCheckChange: PropTypes.func,
-    // todo: 这个地方需要改下， 现在是current和nodeclick一起被设置上了
-    // (nodeModel.data, node)=>Unit
-    onNodeClicked: PropTypes.func,
-    // (nodeModel.data, node)=>Unit
-    onCurrentChange: PropTypes.func,
-    // (nodeModel.data, nodeModel, Node)=>Unit
-    onNodeExpand: PropTypes.func,
-    onNodeCollapse: PropTypes.func,
-  };
-  
   Tree.defaultProps = {
-    autoExpandParent: true,
-    defaultCheckedKeys: [],
-    defaultExpandedKeys: [],
     data: [],
-    expandOnClickNode: true,
-    emptyText: Locale.t('el.tree.emptyText'),
+    emptyText: '无数据',
     indent: 16,
     options: { children: 'children', label: 'label', icon: 'icon' },
     onCheckChange() {},

@@ -1,4 +1,4 @@
-import CollapseTransition from '../../../src/utils/collapse'
+import CollapseTransition from '../../../src/components/CollapseTransition/CollapseTransition'
 
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16';

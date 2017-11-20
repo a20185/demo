@@ -1,29 +1,18 @@
 import React from 'react';
-import Component from '../../utils/component';
-import PropTypes from '../../utils/proptypes';
+import './Input.css'
+import Component from '../BaseComponent/BaseComponent'
 
 class Input extends Component {
-  static defaultProps = {
-    type: 'text',
-    autosize: false,
-    rows: 2,
-    autoComplete: 'off'
-  }
-
-  constructor(props) {
-    super(props);
-    console.log();
-  }
 
   focus() {
     setTimeout(() => {
-      (this.refs.input || this.refs.textarea).focus();
+      (this.refs.input).focus();
     });
   }
 
   blur() {
     setTimeout(() => {
-      (this.refs.input || this.refs.textarea).blur();
+      (this.refs.input).blur();
     });
   }
 
@@ -36,7 +25,6 @@ class Input extends Component {
 
   handleChange(e) {
     const { onChange } = this.props;
-
     if (onChange) {
       onChange(e.target.value);
     }
@@ -84,7 +72,7 @@ class Input extends Component {
             ref="input"
             type={type}
             className="input__inner"
-            autoComplete={autoComplete}
+            autoComplete={'off'}
             onChange={this.handleChange.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             onBlur={this.handleBlur.bind(this)}
@@ -94,22 +82,5 @@ class Input extends Component {
       )
     }
   }
-
-Input.propTypes = {
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  readOnly: PropTypes.bool,
-  autoFocus: PropTypes.bool,
-  defaultValue: PropTypes.any,
-  value: PropTypes.any,
-
-  size: PropTypes.oneOf(['large', 'small', 'mini']),
-  prepend: PropTypes.node,
-  append: PropTypes.node,
-
-  onChange: PropTypes.func,
-}
 
 export default Input;

@@ -268,28 +268,28 @@ export default class Node {
         const childNodes = this.childNodes;
         for (let i = 0, j = childNodes.length; i < j; i++) {
           const child = childNodes[i];
-          child.setChecked(value === true,true);
+          child.setChecked(value === true,deep);
         }
       }
     };
 
-    // if (!this.store.checkStrictly && this.shouldLoadData()) {
+    if (!this.store.checkStrictly && this.shouldLoadData()) {
       // Only work on lazy load data.
-    //   this.loadData(() => {
-    //     handleDescendants();
-    //   }, {
-    //     checked: value !== false
-    //   });
-    // } else {
+      this.loadData(() => {
+        handleDescendants();
+      }, {
+        checked: value !== false
+      });
+    } else {
       handleDescendants();
-    // }
+    }
 
     const parent = this.parent;
     if (!parent || parent.level === 0) return;
 
-    // if (!this.store.checkStrictly) {
-      // reInitChecked(parent);
-    // }
+    if (!this.store.checkStrictly) {
+      reInitChecked(parent);
+    }
   }
 
   getChildren() { // this is data

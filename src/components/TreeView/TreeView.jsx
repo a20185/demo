@@ -238,11 +238,6 @@ default   * @param {*} checked
     this.setState({data: oldData});
   }
 
-  componentWillMount() {
-    // this.fetchAllFiles();
-  }
-
-
   render() {
     const { data, options } = this.state;
   

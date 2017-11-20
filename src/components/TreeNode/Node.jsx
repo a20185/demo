@@ -1,11 +1,11 @@
 import React from 'react';
 import debounce from 'throttle-debounce/debounce';
-import PropTypes from '../../utils/proptypes';
-import Component from '../../utils/component';
-import CollapseTransition from '../../utils/collapse';
+import Component from '../BaseComponent/BaseComponent'
+import CollapseTransition from '../CollapseTransition/CollapseTransition';
 import watchPropertyChange from '../../utils/watch';
 import IDGenerator from '../../utils/idgen';
 import Checkbox from '../CheckBox/CheckBox';
+import './Node.css'
 
 
 
@@ -18,12 +18,6 @@ function NodeContent({context, renderContent}) {
     return <span className="tree-node__label">{nodeModel.label}</span>;
   }
 }
-
-NodeContent.propTypes = {
-  renderContent: PropTypes.func,
-  context: PropTypes.object.isRequired
-};
-
 
 export default class Node extends Component {
   constructor(props) {
@@ -43,7 +37,6 @@ export default class Node extends Component {
   componentDidMount() {
     const nodeModel = this.props.nodeModel;
     const childrenKey = this.props.options.children || 'children';
-
     const triggerChange = debounce(20, (...args) => {
       if (this.isDeconstructed) return;
       this.handleSelectChange.apply(this, args);
@@ -71,14 +64,13 @@ export default class Node extends Component {
         this.idGen.next()
       ] = watchPropertyChange(nodeModel.data, childrenKey, () => {
         nodeModel.updateChildren();
-        this.setState({}); //force update view
+        this.setState({});
       });
     }
   }
 
   componentWillUnmount() {
     this.loadHandler();
-    // clear watchs
     for (let w in this.watchers) {
       if (this.watchers[w]) {
         this.watchers[w]();
@@ -159,7 +151,7 @@ export default class Node extends Component {
     if (!treeNode.props.accordion) return;
     if (nodeModel.isLeaf || !nodeModel.childNodes || !nodeModel.childNodes.length) return;
 
-    nodeModel.childNodes.filter(e=> e !== exclude).forEach(e=>e.collapse());
+    nodeModel.childNodes.filter(e => e !== exclude).forEach(e => e.collapse());
     this.refresh();
   }
 
@@ -181,7 +173,6 @@ export default class Node extends Component {
   render() {
     const { childNodeRendered } = this.state;
     const { treeNode, nodeModel, isShowCheckbox } = this.props;
-
     let expanded = nodeModel.expanded;
 
     return (
@@ -232,17 +223,3 @@ export default class Node extends Component {
     );
   }
 }
-
-Node.propTypes = {
-  nodeModel: PropTypes.object,
-  options: PropTypes.object,
-  treeNode: PropTypes.object.isRequired,
-  isShowCheckbox: PropTypes.bool,
-  onCheckChange: PropTypes.func,
-};
-
-Node.defaultProps = {
-  nodeModel: {},
-  options: {},
-  onCheckChange() {},
-};

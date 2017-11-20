@@ -1,0 +1,122 @@
+.tree-node {
+    white-space: nowrap;
+}
+
+.tree-node__content {
+  box-sizing: border-box;
+  padding-right: 66px;
+  line-height: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.tree-node__label {
+  padding-right: 100px;
+}
+.tree-node__content > .checkbox,
+.tree-node__content > .tree-node__expand-icon {
+  margin-right: 8px;
+}
+.tree-node__content > .checkbox {
+  vertical-align: middle;
+  display: inline-block;
+  height: 20px;
+}
+.tree-node__content:hover {
+  background: #37d4d9;
+}
+
+.tree-node__content:hover > .tree-node__label {
+  color: #fff;
+  background: #37d4d9;
+}
+.tree-node__content:hover > .tree-node__label > span > span.keyword {
+  color: #fff;
+}
+
+.tree-node__content:hover > .tree-node__expand-icon {
+  background-image: url('../../logo/whiteplus.png');
+  transition: background-image 0.3s ease-in-out;
+}
+.tree-node__content:hover > .tree-node__expand-icon.expanded {
+  background-image: url('../../logo/whiteminus.png');
+  transition: background-image 0.3s ease-in-out;
+}
+.tree-node__content:hover > .tree-node__expand-icon.is-leaf {
+  background: transparent;
+}
+
+.contentClicked .el_tree-node__content {
+  background: #43a4a8;
+}
+.contentClicked .tree-node__content > .tree-node__label {
+  color: #fff;
+  background: #43a4a8;
+}
+.contentClicked .tree-node__content > .tree-node__label > span > span.keyword {
+  color: #fff;
+}
+
+.is-current .tree-node__content:hover > .tree-node__label {
+  color: #fff;
+  background: #37d4d9;
+}
+.is-current .tree-node__content:hover {
+  background:#37d4d9!important;
+}
+
+.keyword {
+  color: #dedd89;
+}
+.tree-node__expand-icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 10px;
+  background-image: url('../../logo/blueplus.png');
+  border: none;
+
+  transform: rotate(0deg);
+  transition: all 0.3s ease-in-out;
+}
+.tree-node__expand-icon:hover {
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease-in-out;
+}
+.tree-node__expand-icon.expanded {
+  background-image: url('../../logo/blueminus.png');
+  transition: background-image 0.3s ease-in-out;
+}
+.tree-node__expand-icon.expanded:hover{
+  transform: rotate(-180deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.tree-node__expand-icon.is-leaf {
+  background: transparent;
+  cursor: default;
+}
+
+.tree-node__label {
+  font-size: 14px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.tree-node__loading-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  font-size: 14px;
+  color: color(#fff h(+3) s(23%) l(67%));
+}
+
+.tree-node > .tree-node__children {
+  overflow: hidden;
+}
+
+.tree-node .is-expanded > .tree-node__children {
+  display: block;
+}

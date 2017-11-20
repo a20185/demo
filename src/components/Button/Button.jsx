@@ -1,5 +1,5 @@
 import React from 'react';
-import Component from '../../utils/component'
+import Component from '../BaseComponent/BaseComponent'
 import './Button.css'
 
 

@@ -1,8 +1,7 @@
 
 import React from 'react'
-
-import Component from '../../utils/component'
-import PropTypes from '../../utils/proptypes'
+import './Checkbox.css'
+import Component from '../BaseComponent/BaseComponent'
 
 
 class Checkbox extends Component {
@@ -16,7 +15,6 @@ class Checkbox extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       checked: props.checked,
       focus: props.focus,
@@ -54,28 +52,12 @@ class Checkbox extends Component {
     if (e.target instanceof HTMLInputElement || e.unitTest) {
       const { label } = this.state;
       const { trueLabel, falseLabel} = this.props;
-
       const checked = e.target.checked;
-      const group = this.context.ElCheckboxGroup;
-
-      if (group) {
-        const length = group.state.options.length + (checked ? 1 : -1);
-
-        if (group.props.min !== undefined && length < group.props.min) {
-          return;
-        }
-
-        if (group.props.max !== undefined && length > group.props.max) {
-          return;
-        }
-      }
 
       let newLabel = label;
-
       if (this.props.trueLabel || this.props.falseLabel) {
         newLabel = checked ? trueLabel : falseLabel;
       }
-
       this.setState({
         checked: checked,
         label: newLabel,
@@ -102,14 +84,14 @@ class Checkbox extends Component {
           'is-disabled': this.props.disabled,
           'is-checked': this.state.checked,
           'is-indeterminate': this.props.indeterminate,
-          'is-focus': this.state.focus
+          'is-focus': this.state.focus || false
         })}>
           <span className="checkbox__inner"></span>
           <input
             className="checkbox__original"
             type="checkbox"
-            checked={this.state.checked}
-            disabled={this.props.disabled}
+            checked={this.state.checked || false}
+            disabled={this.props.disabled || false}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
             onChange={this.onChange.bind(this)}
@@ -123,24 +105,5 @@ class Checkbox extends Component {
   }
 }
 
-Checkbox.contextTypes = {
-  ElCheckboxGroup: PropTypes.any
-};
-
-Checkbox.propTypes = {
-  label: PropTypes.string,
-  trueLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  falseLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  disabled: PropTypes.bool,
-  checked: PropTypes.bool,
-  indeterminate: PropTypes.bool,
-  focus: PropTypes.bool,
-  onChange: PropTypes.func
-};
-
-Checkbox.defaultProps = {
-  checked: false,
-  focus: false
-};
 
 export default Checkbox;

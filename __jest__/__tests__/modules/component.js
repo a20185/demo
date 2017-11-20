@@ -1,7 +1,7 @@
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16';
 import {configure, shallow} from 'enzyme'
-import BasicComponent from '../../../src/utils/component'
+import BasicComponent from '../../../src/components/BaseComponent/BaseComponent'
 
 configure({adapter: new Adapter()});
 

@@ -1,0 +1,43 @@
+.input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+}
+.input__inner {
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    border-right:none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-sizing: border-box;
+    color: #000;
+    display: inline-block;
+    font-size: inherit;
+    height: 36px;
+    line-height: 1;
+    outline: none;
+    padding: 3px 10px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 90%;
+}
+.input__inner::placeholder {
+    color: color(#000 h(+3) s(16%) l(58%));
+}
+
+.input__inner:hover {
+    border-color: #000;
+}
+
+.input__inner:focus {
+    outline: none;
+    border-color:#20a0ff;
+}
+.input-group__append {
+    display: inline-block!important;
+    width: 10%;
+    height: 60px;
+    line-height: 60px;
+}
