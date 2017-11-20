@@ -66,7 +66,7 @@ export default class CollapseTransition extends Component {
       el.style.paddingBottom = el.dataset.oldPaddingBottom;
     }
 
-    el.style.overflow = 'visible';
+    el.style.overflow = 'hidden';
 
     this.enterTimer = setTimeout(() => this.afterEnter(), ANIMATION_DURATION);
   }
@@ -88,7 +88,7 @@ export default class CollapseTransition extends Component {
     if (el.scrollHeight !== 0) {
       el.style.height = el.scrollHeight + 'px';
     }
-    el.style.overflow = 'visible';
+    el.style.overflow = 'hidden';
   }
 
   leave() {
@@ -116,8 +116,7 @@ export default class CollapseTransition extends Component {
     return (
       <div
         className="collapse-transition"
-        style={{ overflow: 'visible' }}
-        isshow={ this.props.children }
+        style={{ overflow: 'hidden' }}
         ref={e => this.selfRef = e}
       >
         {this.props.children}

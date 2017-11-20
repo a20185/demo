@@ -15,13 +15,13 @@ div.searchBlock {
     line-height: 60px;
     background-color: #425a7c;
 }
-.el-input {
+.input {
     position: relative;
     font-size: 14px;
     display: inline-block;
     width: 100%;
 }
-.el-input__inner {
+.input__inner {
     background-color: #fff;
     background-image: none;
     border-radius: 4px;
@@ -40,15 +40,15 @@ div.searchBlock {
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 90%;
 }
-.el-input__inner::placeholder {
+.input__inner::placeholder {
     color: color(#000 h(+3) s(16%) l(58%));
 }
 
-.el-input__inner:hover {
+.input__inner:hover {
     border-color: #000;
 }
 
-.el-button > span > .clear {
+/* .button > span > .clear {
     width:20px;
     height:20px;
     line-height: 22px;
@@ -57,23 +57,23 @@ div.searchBlock {
     transition: all 0.3s ease-in-out;
 }
 
-.el-button > span > .clear:hover {
+.button > span > .clear:hover {
     background-image: url('./crosshover.png');
     transform: rotate(-180deg);
     transition: all 0.3s ease-in-out;
-}
+} */
 
-.el-input__inner:focus {
+.input__inner:focus {
     outline: none;
     border-color:#20a0ff;
 }
-.el-input-group__append {
+.input-group__append {
     display: inline-block!important;
     width: 10%;
     height: 60px;
     line-height: 60px;
 }
-.el-button {
+/* .button {
     height: 36px;
     position: relative;
     line-height: 22px;
@@ -88,8 +88,8 @@ div.searchBlock {
     -moz-user-select: none;
     -khtml-user-select: none;
     user-select: none;
-}
-.el-tree {
+} */
+.tree {
     cursor: default;
     background: #2f4666;
     color: #4ab4c3;
@@ -99,14 +99,14 @@ div.searchBlock {
     font-weight: bold;
     /* border: 1px solid var(--color-base-gray); */
 }  
-.el-tree__empty-block {
+.tree__empty-block {
     position: relative;
     min-height: 60px;
     text-align: center;
     width: 100%;
     height: 100%;
 }
-.el-tree__empty-text {
+.tree__empty-text {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -114,11 +114,11 @@ div.searchBlock {
     color: color(#20a0ff s(16%) l(44%));
 }
     
-.el-tree-node {
+.tree-node {
       white-space: nowrap;
 }
 
-.el-tree-node__content {
+.tree-node__content {
     box-sizing: border-box;
     padding-right: 66px;
     line-height: 36px;
@@ -126,45 +126,45 @@ div.searchBlock {
     cursor: pointer;
 }
 
-.el-tree-node__label {
+.tree-node__label {
     padding-right: 100px;
 }
-.el-tree-node__content > .el-checkbox,
-.el-tree-node__content > .el-tree-node__expand-icon {
+.tree-node__content > .checkbox,
+.tree-node__content > .tree-node__expand-icon {
     margin-right: 8px;
 }
-.el-tree-node__content > .el-checkbox {
+.tree-node__content > .checkbox {
     vertical-align: middle;
     display: inline-block;
     height: 20px;
 }
-.el-tree-node__content:hover {
+.tree-node__content:hover {
     background: #37d4d9;
     /* transition: background 0.3s ease-in-out; */
 }
 /* 
-.el-tree-node__content:hover .is_current > .el-tree-node__label {
+.tree-node__content:hover .is_current > .tree-node__label {
     color: #fff;
     background: #87bbe4;
 } */
-.el-tree-node__content:hover > .el-tree-node__label {
+.tree-node__content:hover > .tree-node__label {
     color: #fff;
     background: #37d4d9;
     /* transition: background 0.3s ease-in-out; */
 }
-.el-tree-node__content:hover > .el-tree-node__label > span > span.keyword {
+.tree-node__content:hover > .tree-node__label > span > span.keyword {
     color: #fff;
 }
 
-.el-tree-node__content:hover > .el-tree-node__expand-icon {
+.tree-node__content:hover > .tree-node__expand-icon {
     background-image: url('./whiteplus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.el-tree-node__content:hover > .el-tree-node__expand-icon.expanded {
+.tree-node__content:hover > .tree-node__expand-icon.expanded {
     background-image: url('./whiteminus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.el-tree-node__content:hover > .el-tree-node__expand-icon.is-leaf {
+.tree-node__content:hover > .tree-node__expand-icon.is-leaf {
     background: transparent;
 }
 
@@ -172,42 +172,42 @@ div.searchBlock {
     background: #43a4a8;
     /* transition: background 0.3s ease-in-out; */
 }
-.contentClicked .el-tree-node__content > .el-tree-node__label {
+.contentClicked .tree-node__content > .tree-node__label {
     color: #fff;
     background: #43a4a8;
     /* transition: background 0.3s ease-in-out; */
 }
-.contentClicked .el-tree-node__content > .el-tree-node__label > span > span.keyword {
+.contentClicked .tree-node__content > .tree-node__label > span > span.keyword {
     color: #fff;
 }
 
-.is-current .el-tree-node__content:hover > .el-tree-node__label {
+.is-current .tree-node__content:hover > .tree-node__label {
     color: #fff;
     background: #37d4d9;
     /* transition: background 0.3s ease-in-out; */
 }
-.is-current .el-tree-node__content:hover {
+.is-current .tree-node__content:hover {
     background:#37d4d9!important;
 }
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content > .el-tree-node__label {
+.tree--highlight-current .tree-node.is-current > .tree-node__content > .tree-node__label {
     background: #87bbe4;
     color: #fff;
 }
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content:hover > .el-tree-node__label {
+.tree--highlight-current .tree-node.is-current > .tree-node__content:hover > .tree-node__label {
     background: #37d4d9;
     color: #fff;
 }
 
 
-.contentClicked .el-tree-node__content > .el-tree-node__expand-icon {
+.contentClicked .tree-node__content > .tree-node__expand-icon {
     background-image: url('./whiteplus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.contentClicked .el-tree-node__content > .el-tree-node__expand-icon.expanded {
+.contentClicked .tree-node__content > .tree-node__expand-icon.expanded {
     background-image: url('./whiteminus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.contentClicked .el-tree-node__content > .el-tree-node__expand-icon.is-leaf {
+.contentClicked .tree-node__content > .tree-node__expand-icon.is-leaf {
     background: transparent;
 }
 
@@ -217,7 +217,7 @@ div.searchBlock {
 .keyword {
     color: #dedd89;
 }
-.el-tree-node__expand-icon {
+.tree-node__expand-icon {
     display: inline-block;
     cursor: pointer;
     width: 20px;
@@ -234,30 +234,30 @@ div.searchBlock {
     transform: rotate(0deg);
     transition: all 0.3s ease-in-out;
 }
-.el-tree-node__expand-icon:hover {
+.tree-node__expand-icon:hover {
     /* border-left-color: #999; */
     transform: rotate(-90deg);
     transition: transform 0.3s ease-in-out;
 }
-.el-tree-node__expand-icon.expanded {
+.tree-node__expand-icon.expanded {
     background-image: url('./blueminus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.el-tree-node__expand-icon.expanded:hover{
+.tree-node__expand-icon.expanded:hover{
     transform: rotate(-180deg);
     transition: transform 0.5s ease-in-out;
 }
 
-.el-tree-node__expand-icon.is-leaf {
+.tree-node__expand-icon.is-leaf {
     background: transparent;
     cursor: default;
 }
 
-.el-checkbox__input.is-checked .el-checkbox__inner {
+.checkbox__input.is-checked .checkbox__inner {
     background-image: url('./ok.png');
     border-color: #0190fe;
 }
-.el-checkbox__inner {
+.checkbox__inner {
     display: inline-block;
     position: relative;
     /* border: 1px solid #bfcbd9; */
@@ -269,7 +269,7 @@ div.searchBlock {
     z-index: 1;
     transition: background-color .25s cubic-bezier(.71,-.46,.29,1.46);
 }
-.el-checkbox__inner::after {
+.checkbox__inner::after {
     box-sizing: content-box;
     content: "";
     border: 2px solid #fff;
@@ -286,7 +286,7 @@ div.searchBlock {
     -ms-transform-origin: center;
     transform-origin: center;
 }
-.el-checkbox__original {
+.checkbox__original {
     opacity: 0;
     outline: 0;
     position: absolute;
@@ -296,13 +296,13 @@ div.searchBlock {
     left: -999px;
 }
 
-.el-tree-node__label {
+.tree-node__label {
     font-size: 14px;
     vertical-align: middle;
     display: inline-block;
 }
   
-.el-tree-node__loading-icon {
+.tree-node__loading-icon {
     display: inline-block;
     vertical-align: middle;
     margin-right: 4px;
@@ -310,12 +310,12 @@ div.searchBlock {
     color: color(#fff h(+3) s(23%) l(67%));
 }
   
-.el-tree-node > .el-tree-node__children {
+.tree-node > .tree-node__children {
     overflow: hidden;
     /* background-color: transparent; */
 }
   
-.el-tree-node .is-expanded > .el-tree-node__children {
+.tree-node .is-expanded > .tree-node__children {
     display: block;
 }
 .collapse-transition {
@@ -325,25 +325,25 @@ div.searchBlock {
     transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out, 0.3s padding-right ease-in-out;
 }
   
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+.tree--highlight-current .tree-node.is-current > .tree-node__content {
     background-color: #87bbe4;
 }
 
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content  > .el-tree-node__label {
+.tree--highlight-current .tree-node.is-current > .tree-node__content  > .tree-node__label {
     color: #2f4666;
 }
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content  > .el-tree-node__label > span > span.keyword {
+.tree--highlight-current .tree-node.is-current > .tree-node__content  > .tree-node__label > span > span.keyword {
     color: #2f4666;
 }
 
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content  > .el-tree-node__expand-icon {
+.tree--highlight-current .tree-node.is-current > .tree-node__content  > .tree-node__expand-icon {
     background-image: url('./whiteplus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content  > .el-tree-node__expand-icon.expanded {
+.tree--highlight-current .tree-node.is-current > .tree-node__content  > .tree-node__expand-icon.expanded {
     background-image: url('./whiteminus.png');
     transition: background-image 0.3s ease-in-out;
 }
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content  > .el-tree-node__expand-icon.is-leaf {
+.tree--highlight-current .tree-node.is-current > .tree-node__content  > .tree-node__expand-icon.is-leaf {
     background: transparent;
 }

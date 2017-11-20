@@ -120,8 +120,8 @@ export default class Tree extends Component {
       const renderEmptyText = ()=>{
         if (!this.root.childNodes || this.root.childNodes.length === 0){
           return (
-            <div className="el-tree__empty-block">
-              <span className="el-tree__empty-text">{emptyText}</span>
+            <div className="tree__empty-block">
+              <span className="tree__empty-text">{emptyText}</span>
             </div>
           )
         } else return null;
@@ -130,8 +130,8 @@ export default class Tree extends Component {
       return (
         <div
           style={this.style()}
-          className={this.className('el-tree', {
-            'el-tree--highlight-current': highlightCurrent
+          className={this.className('tree', {
+            'tree--highlight-current': highlightCurrent
           })}
         >
           {this.root.childNodes.map((e, idx) => {

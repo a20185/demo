@@ -97,16 +97,16 @@ class Checkbox extends Component {
 
   render() {
     return (
-      <label style={this.style()} className={this.className('el-checkbox')}>
-        <span className={this.classNames('el-checkbox__input', {
+      <label style={this.style()} className={this.className('checkbox')}>
+        <span className={this.classNames('checkbox__input', {
           'is-disabled': this.props.disabled,
           'is-checked': this.state.checked,
           'is-indeterminate': this.props.indeterminate,
           'is-focus': this.state.focus
         })}>
-          <span className="el-checkbox__inner"></span>
+          <span className="checkbox__inner"></span>
           <input
-            className="el-checkbox__original"
+            className="checkbox__original"
             type="checkbox"
             checked={this.state.checked}
             disabled={this.props.disabled}
@@ -115,7 +115,7 @@ class Checkbox extends Component {
             onChange={this.onChange.bind(this)}
           />
         </span>
-        <span className="el-checkbox__label">
+        <span className="checkbox__label">
           {this.props.children || this.state.label}
         </span>
       </label>

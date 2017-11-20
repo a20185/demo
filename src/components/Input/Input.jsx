@@ -59,12 +59,12 @@ class Input extends Component {
     } = this.props;
 
     const classname = this.classNames(
-      type === 'textarea' ? 'el-textarea' : 'el-input',
-      size && `el-input--${size}`, {
+      type === 'textarea' ? 'textarea' : 'input',
+      size && `input--${size}`, {
         'is-disabled': this.props.disabled,
-        'el-input-group': prepend || append,
-        'el-input-group--append': !!append,
-        'el-input-group--prepend': !!prepend
+        'input-group': prepend || append,
+        'input-group--append': !!append,
+        'input-group--prepend': !!prepend
       }
     );
 
@@ -79,17 +79,17 @@ class Input extends Component {
     delete otherProps.onIconClick;
       return (
         <div style={this.style()} className={this.className(classname)}>
-          { prepend && <div className="el-input-group__prepend">{prepend}</div> }
+          { prepend && <div className="input-group__prepend">{prepend}</div> }
           <input { ...otherProps }
             ref="input"
             type={type}
-            className="el-input__inner"
+            className="input__inner"
             autoComplete={autoComplete}
             onChange={this.handleChange.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             onBlur={this.handleBlur.bind(this)}
           />
-          { append && <div className="el-input-group__append">{append}</div> }
+          { append && <div className="input-group__append">{append}</div> }
         </div>
       )
     }
