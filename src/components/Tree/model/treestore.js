@@ -13,20 +13,22 @@ export default class TreeStore {
     }
 
     this.nodesMap = {};
-
+    const nodeFn = this.updateNodeCallback;
     this.root = new Node({
       data: this.data,
       store: this
     });
-
     if (this.lazy && this.load) {
       const loadFn = this.load;
       loadFn(this.root, (data) => {
+        console.log("We got: " , data);
         this.root.doCreateChildren(data);
         this._initDefaultCheckedNodes();
+        nodeFn();
       });
     } else {
       this._initDefaultCheckedNodes();
+      nodeFn();
     }
   }
 
@@ -58,6 +60,32 @@ export default class TreeStore {
       if (node.visible && !node.isLeaf) node.expand();
     };
     traverse(this);
+  }
+
+  clearSearchStatus() {
+    const nodeFn = this.updateNodeCallback;    
+    if (!this.oldData || !this.oldRoot) return;
+    this.root = this.oldRoot;
+    this.data = this.oldData;
+    this._initDefaultCheckedNodes();
+    nodeFn();
+  }
+
+  createAfterSearch(data) {
+    const nodeFn = this.updateNodeCallback;
+    if (!this.oldData) {
+      this.oldData = this.data;
+    }
+    if (!this.oldRoot) {
+      this.oldRoot = this.root;
+    }
+    this.root = new Node({
+      data: data,
+      store: this
+    });
+    this.root.doCreateChildren(data);
+    this._initDefaultCheckedNodes();
+    nodeFn();
   }
 
   setData(newVal) {

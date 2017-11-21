@@ -1,10 +1,10 @@
 import React , {Component} from 'react'
-import Input from '../Input/Input'
-import Button from '../Button/Button'
-import Tree from '../Tree/Tree'
+import Input from '../../components/Input/Input'
+import Button from '../../components/Button/Button'
+import Tree from '../../components/Tree/Tree'
 import Ajax from '../../utils/ajax'
 import Config from '../../utils/config'
-import TreeStore from '../Tree/model/treestore'
+import TreeStore from '../../components/Tree/model/treestore'
 import debounce from 'throttle-debounce/debounce'
 import './TreeView.css'
 /**
@@ -89,6 +89,8 @@ class TreeView extends Component {
         childStore: [],
         currentNode: null
       }
+
+      // console.log(mTreeStore.root);
   }
   
   /**

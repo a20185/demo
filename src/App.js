@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TreeView from './components/TreeView/TreeView'
+import TreeView from './views/TreeView/TreeView'
 class App extends Component {
   render() {
     return (

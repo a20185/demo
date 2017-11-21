@@ -117,7 +117,6 @@ export default class CollapseTransition extends Component {
       <div
         className="collapse-transition"
         style={{ overflow: 'hidden' }}
-        isShow={ this.props.isShow }
         ref={e => this.selfRef = e}
       >
         {this.props.children}

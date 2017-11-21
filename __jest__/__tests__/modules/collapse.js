@@ -42,12 +42,12 @@ test('The Component is created successfully', () => {
 });
 
 
-test('Check trigger collapse status for true', () => {
-    wrapper.setProps({isShow: true});
-    expect(wrapper.prop('isShow')).toBe(true);
-});
+// test('Check trigger collapse status for true', () => {
+//     wrapper.setProps({isShow: true});
+//     expect(wrapper.prop('isShow')).toBe(true);
+// });
 
-test('Check trigger collapse status for false', () => {
-    wrapper.setProps({isShow: false});
-    expect(wrapper.prop('isShow')).toBe(false);
-});
+// test('Check trigger collapse status for false', () => {
+//     wrapper.setProps({isShow: false});
+//     expect(wrapper.prop('isShow')).toBe(false);
+// });

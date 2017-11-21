@@ -26,6 +26,7 @@ const reInitChecked = function(node) {
 };
 
 const getPropertyFromData = function(node, prop) {
+  // console.log("Node is:" , node);
   const props = node.store.props;
   const data = node.data || {};
   const config = props[prop];
@@ -58,6 +59,11 @@ export default class Node {
       }
     }
 
+    this.mLabel = getPropertyFromData(this,'label');
+    this.mIcon = getPropertyFromData(this,'icon');
+    let tmpKey = this.store.key;
+    this.mKey = this.data ? this.data[tmpKey] : null;
+
     // internal
     this.level = 0;
     this.loaded = false;
@@ -67,13 +73,11 @@ export default class Node {
     if (this.parent) {
       this.level = this.parent.level + 1;
     }
-
     const store = this.store;
     if (!store) {
       throw new Error('[Node]store is required!');
     }
     store.registerNode(this);
-
     const props = store.props;
     if (props && typeof props.isLeaf !== 'undefined') {
       const isLeaf = getPropertyFromData(this, 'isLeaf');
@@ -108,6 +112,7 @@ export default class Node {
     }
 
     this.updateLeafState();
+    window.test = this;
   }
 
   setData(data) {
@@ -130,18 +135,31 @@ export default class Node {
     }
   }
 
+  getPropertyFromData(labelName) {
+    // console.log("Node is:" , this);
+    const props = this.store.props;
+    const data = this.data || {};
+    const config = props[labelName];
+  
+    if (typeof config === 'function') {
+      return config(data, this);
+    } else if (typeof config === 'string') {
+      return data[config];
+    } else if (typeof config === 'undefined') {
+      return '';
+    }
+  }
+
   get label() {
-    return getPropertyFromData(this, 'label');
+    return this.mLabel;
   }
 
   get icon() {
-    return getPropertyFromData(this, 'icon');
+    return this.mIcon;
   }
 
   get key() {
-    const nodeKey = this.store.key;
-    if (this.data) return this.data[nodeKey];
-    return null;
+    return this.mKey;
   }
 
   insertChild(child, index) {
@@ -162,7 +180,6 @@ export default class Node {
     } else {
       this.childNodes.splice(index, 0, child);
     }
-
     this.updateLeafState();
   }
 
@@ -182,6 +199,7 @@ export default class Node {
     }
     this.insertChild(child, index);
   }
+
 
   removeChild(child) {
     const index = this.childNodes.indexOf(child);
